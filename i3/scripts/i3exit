@@ -1,0 +1,49 @@
+#!/bin/sh
+
+revert_dpms() {
+    xset dpms 0 0 0
+}
+
+lock() {
+    trap revert_dpms HUP INT TERM
+    local has_compton=false
+    killall compton && has_compton=true || has_compton=false
+    xset +dpms dpms 5 5 5
+    i3lock -n -c 000000
+    revert_dpms
+    if [ ${has_compton} ]; then compton -C -b --unredir-if-possible; fi
+}
+
+wait_for_lock() {
+    while ! 2>/dev/null killall -0 i3lock; do
+        sleep 1
+    done
+}
+
+case "$1" in
+    lock)
+        lock
+        ;;
+    logout)
+        i3-msg exit
+        ;;
+    suspend)
+        lock &
+        wait_for_lock && systemctl suspend
+        ;;
+    hibernate)
+        lock &
+        wait_for_lock && systemctl hibernate
+        ;;
+    reboot)
+        systemctl reboot
+        ;;
+    shutdown)
+        systemctl poweroff
+        ;;
+    *)
+        echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"
+        exit 2
+esac
+
+exit 0
