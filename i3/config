@@ -43,13 +43,14 @@ bindsym $mod+Shift+q kill
 # installed.
 bindsym $mod+m exec --no-startup-id i3-dmenu-desktop
 
-# alternatively, you can use the cursor keys:
+
+# Changing of window focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# alternatively, you can use the cursor keys:
+# Swap windows around, visually
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
