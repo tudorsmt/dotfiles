@@ -208,33 +208,6 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
 
 set $tray_padding_px 2
 set $tray_separator_symbol " | "
-# # Laptop monitor
-# bar {
-#     output DP-3
-#     position top
-#     separator_symbol $tray_separator_symbol
-#     tray_output primary
-#     tray_padding $tray_padding_px
-# }
-#
-# # Horizontal monitor to the center
-# bar {
-#     output DP-4
-#     position top
-#     separator_symbol $tray_separator_symbol
-#     tray_output primary
-#     tray_padding $tray_padding_px
-#     status_command i3blocks -c ~/.config/i3/i3blocks.conf
-# }
-#
-# # Vertical monitor to the right
-# bar {
-#     output DP-2
-#     position top
-#     tray_output primary
-#     tray_padding $tray_padding_px
-#     separator_symbol $tray_separator_symbol
-# }
 
 bar {
     position top
@@ -255,7 +228,10 @@ exec_always --no-startup-id setxkbmap -option ctrl:nocaps,grp:win_space_toggle,l
 exec /usr/bin/albert
 
 # nice compositor
-exec_always compton -C -b --unredir-if-possible &
-exec feh --bg-scale ~/Dropbox/Wallpapers/Stars-Wallpapers-8.jpg &
-exec dropbox start &
-exec xautolock -time 10 -locker '~/.config/i3/scripts/i3exit lock' &
+exec_always --no-startup-id compton -C -b --unredir-if-possible
+
+# wallpaper management
+exec --no-startup-id nitrogen --restore
+
+exec --no-startup-id dropbox start
+exec --no-startup-id xautolock -time 10 -locker '~/.config/i3/scripts/i3exit lock'
