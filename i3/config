@@ -215,6 +215,11 @@ bar {
     tray_output primary
     tray_padding $tray_padding_px
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
+
+    colors {
+        separator #268bd2
+        background #222222
+  }
 }
 
 # set keyboard layouts and switching for them
