@@ -136,13 +136,9 @@ bindsym $mod+r mode "resize"
 
 set $script_dir ~/.config/i3/scripts
 set $i3exit ~/.config/i3/scripts/i3exit
-
 focus_follows_mouse no
 
-bindsym Control+space exec albert toggle
-
-# Restore GNOME's settings
-exec --no-startup-id /usr/libexec/gnome-settings-daemon-localeexec
+## keyboard bindings
 
 # Fix a bug in gnome-settings-daemon: http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
 exec --no-startup-id dconf write /org/gnome/settings-daemon/plugins/cursor/active false
@@ -204,8 +200,9 @@ bindsym $mod+Pause mode "$mode_system"
 
 # attempt to setup the displays, if the current situation is known
 exec --no-startup-id $script_dir/setup_displays.sh
+exec --no-startup-id $script_dir/start-gnome-keyring.sh
 
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
+#bindsym $mod+m exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show -modi drun\,run -matching fuzzy'
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -234,11 +231,8 @@ exec_always --no-startup-id setxkbmap -option ctrl:nocaps,grp:win_space_toggle,l
 
 # Window-specific settings
 for_window [class="Keepassx"] floating enable
-for_window [class="cola"] floating enable
-
-## Autostart section
-# Albert - custom launcher
-exec /usr/bin/albert
+for_window [class="Cola" instance="cola"] floating enable
+for_window [title="^Android Emulator - .*"] floating enable
 
 # nice compositor
 exec_always --no-startup-id compton -C -b --unredir-if-possible

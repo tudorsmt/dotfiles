@@ -9,7 +9,7 @@ lock() {
     local has_compton=false
     killall compton && has_compton=true || has_compton=false
     xset +dpms dpms 5 5 5
-    i3lock -n -c 000000
+    i3lock -n -c 000000 -i ~/Dropbox/Wallpapers/tumblr_luvodahgub1r05h8d_1.png -t
     revert_dpms
     if [ ${has_compton} ]; then compton -C -b --unredir-if-possible; fi
 }
