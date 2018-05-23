@@ -182,6 +182,9 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+n exec --no-startup-id $script_dir/move_to_new_workspace.py
 bindsym $mod+Shift+n exec --no-startup-id $script_dir/new_empty_workspace.sh
 
+# Rename current workspace
+bindsym $mod+F2 exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+
 bindsym Mod1+Tab exec --no-startup-id rofi -show window -matching fuzzy
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
