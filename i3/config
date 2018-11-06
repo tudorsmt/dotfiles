@@ -153,9 +153,6 @@ bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
-# network manager
-exec --no-startup-id nm-applet
-
 # Move container to other monitors
 bindsym Mod4+Control+Left move container to output left
 bindsym Mod4+Control+Right move container to output right
@@ -202,10 +199,6 @@ mode "$mode_system" {
 }
 bindsym $mod+Pause mode "$mode_system"
 
-# attempt to setup the displays, if the current situation is known
-exec --no-startup-id $script_dir/setup_displays.sh
-exec --no-startup-id $script_dir/start-gnome-keyring.sh
-
 # bindsym $mod+Shift+m exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -modi drun\,run -matching fuzzy -show'
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -227,6 +220,10 @@ bar {
   }
 }
 
+##
+# Autostart section
+##
+
 # set keyboard layouts and switching for them
 exec_always --no-startup-id setxkbmap -layout us,de,ro -variant euro,,
 
@@ -238,6 +235,8 @@ for_window [class="Keepassx"] floating enable
 for_window [class="Cola" instance="cola"] floating enable
 for_window [title="^Android Emulator - .*"] floating enable
 
+exec --no-startup-id $script_dir/start-gnome-keyring.sh
+
 # nice compositor
 exec_always --no-startup-id compton -C -b --unredir-if-possible
 
@@ -247,3 +246,9 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id dropbox start
 exec --no-startup-id xautolock -time 10 -locker '~/.config/i3/scripts/i3exit lock'
 exec --no-startup-id xfce4-power-manager
+
+# network manager
+exec --no-startup-id nm-applet
+
+# attempt to setup the displays, if the current situation is known
+exec --no-startup-id $script_dir/setup_displays.sh
