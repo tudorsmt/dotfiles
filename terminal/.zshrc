@@ -136,6 +136,8 @@ unalias grv
 eval `keychain --eval ~/.ssh/*_rsa`
 
 # start TMUX if it's not running
-if [ -z "${TMUX}" ]; then tmux; fi
+if [ -z "${TMUX}" ]; then tmux new; fi
 
 fpath=(~/.oh-my-zsh/custom/functions $fpath)
+
+eval $(thefuck --alias)
