@@ -47,3 +47,5 @@
           - network-manager-gnome
           - xfce4-volumed
           - xautolock
+          - zsh # shell
+          - tmux # multi-terminal (terminal multiplexer)
