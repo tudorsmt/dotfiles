@@ -241,9 +241,9 @@ exec_always --no-startup-id setxkbmap -layout us,de,ro -variant euro,,
 # remap Caps Lock to control and map keyboard layout switching
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps,grp:win_space_toggle,lv3:ralt_switch
 
-# Window-specific settings
+# Window-specific settings, get it with `xprop` command
 for_window [class="Keepassx"] floating enable
-for_window [class="Cola" instance="cola"] floating enable
+for_window [class="cola" instance="cola"] floating enable
 for_window [title="^Android Emulator - .*"] floating enable
 
 exec --no-startup-id $script_dir/start-gnome-keyring.sh
