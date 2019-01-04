@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Dropbox Ubuntu >= 16.04 key
+      apt_key:
+        keyserver: pgp.mit.edu
+        id: 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
+      when: ansible_distribution_version >= '16.04'
+      tags:
+        - dropbox
+
+    - name: Dropbox repository Ubuntu >= 16.04
+      apt_repository:
+        repo: 'deb http://linux.dropbox.com/ubuntu/ {{ ansible_distribution_release }} main'
+      when: ansible_distribution_version >= '16.04'
+      tags:
+        - dropbox
+
+    - name: Dropbox client
+      apt:
+        update_cache: yes
+        name: dropbox
+        state: present
+      tags:
+        - dropbox

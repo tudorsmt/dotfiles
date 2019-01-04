@@ -1,0 +1,290 @@
+---
+- hosts: localhost
+  become: yes
+
+  vars:
+    vagrant_version: 1.8.1
+    vagrant_package_name: vagrant
+    vagrant_deb: "vagrant_{{ vagrant_version }}_x86_64.deb"
+    vagrant_url: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/{{ vagrant_deb }}"
+
+  tasks:
+
+  - name: Update & upgrade
+    ignore_errors: yes
+    apt:
+      update_cache: yes
+      upgrade: safe
+
+  - name: Update & dist-upgrade
+    ignore_errors: yes
+    apt:
+      update_cache: yes
+      upgrade: dist
+
+  # Download and install Vagrant
+  # - name: Check if vagrant is installed
+  #   command: "dpkg-query -W {{ vagrant_package_name }}"
+  #   register: vagrant_check_deb
+  #   failed_when: vagrant_check_deb.rc > 1
+  #   changed_when: vagrant_check_deb.rc == 1
+
+  # - name: Download vagrant
+  #   get_url:
+  #     url: "{{ vagrant_url }}"
+  #     dest: "/home/{{ ansible_env.USER }}/Downloads"
+  #   when: vagrant_check_deb.rc == 1
+
+  # - name: Install vagrant
+  #   apt:
+  #     deb: "/home/{{ ansible_env.USER }}/Downloads/{{ vagrant_deb }}"
+  #   when: vagrant_check_deb.rc == 1
+
+  - name: Ansible ppa
+    apt_repository:
+      repo: ppa:ansible/ansible
+    tags:
+      - repository
+      - ppa
+      - ansible
+
+  - name: Ansible package installation
+    apt:
+      name: ansible
+    tags:
+      - ansible
+
+  - name: Git repository
+    apt_repository:
+      repo: ppa:git-core/ppa
+    tags:
+        - git
+        - repository
+        - ppa
+
+  - name: Gitk
+    apt:
+      name: gitk
+    tags:
+        - git
+        - gitk
+
+  - name: Git Cola
+    apt:
+        name: git-cola
+    tags:
+        - git
+        - git-cola
+
+  - name: Subversion
+    apt: name=subversion
+    tags:
+      - subversion
+      - work
+
+  - name: Glogg
+    apt:
+        name: glogg
+    tags:
+        - glogg
+
+  - name: lbzip2
+    apt: name=lbzip2
+    tags:
+        - lbzip2
+        - work
+
+  - name: pigz
+    apt: name=pigz
+    tags:
+        - pigz
+        - work
+
+  - name: can-utils
+    apt: name=can-utils
+    tags:
+        - can-utils
+        - work
+
+  - name: vim
+    apt: name=vim
+    tags:
+        - vim
+        - work
+
+  - name: Shutter - feature-rich screenshot program
+    apt: name=shutter
+    tags:
+        - shutter
+
+  - name: Xclip
+    apt: name=xclip
+    tags:
+      - xclip
+
+  - name: cifs-utils - mount smb and cifs shares
+    apt: name=cifs-utils
+    tags:
+      - cifs-utils
+      - filesystems
+
+  - name: exFAT filesystem and Fuse mountables
+    apt: name={{ item }}
+    with_items:
+      - exfat-fuse
+      - exfat-utils
+    tags:
+      - exfat
+      - filesystems
+
+  - name: PPA graphics drivers
+    apt_repository:
+      repo: ppa:graphics-drivers/ppa
+    tags:
+        - drivers
+        - nvidia
+        - repository
+        - ppa
+
+  # https://github.com/koalaman/shellcheck
+  # Check shell scripts
+  #- name: Install shellcheck
+  #  snap:
+  #    name: shellcheck
+  #    channel: edge
+  #  tags:
+  #      - shellcheck
+
+  - name: KeePassX
+    apt:
+      name: keepassx
+    tags:
+        - keepassx
+
+  - name: OpenVPN Gnome GUI
+    apt:
+        name: network-manager-openvpn-gnome
+        state: present
+        update_cache: yes
+    tags:
+        - vpn
+
+  - name: PicoCom
+    apt:
+      name: picocom
+
+  - name: FTDI utilities for programming FTDI connectors
+    apt: name={{ item }}
+    with_items:
+      - libftdi1
+      - ftdi-eeprom
+    tags:
+      - ftdi
+      - work
+
+# laptop only tools
+## Power management
+## https://github.com/linrunner/TLP
+
+#  - name: TLP repository
+#    apt_repository: repo=ppa:linrunner/tlp
+#    tags:
+#      - tlp
+#      - laptop
+
+#  - name: TLP packages
+#    apt: name={{ item }}
+#    with_items:
+#      - tlp
+#      - tlp-rdw
+#    tags:
+#      - tlp
+#      - laptop
+
+# File management / sync
+
+
+  - name: Double commander repository
+    apt_repository:
+      repo: ppa:alexx2000/doublecmd
+      update_cache: yes
+    tags:
+    - double-commander
+    - home
+    - work
+
+  - name: Double commander installation
+    apt: name=doublecmd-gtk
+    tags:
+    - double-commander
+    - home
+    - work
+
+# Chat/mail clients
+
+  - name: Pidgin
+    apt:
+      name: pidgin
+      state: present
+      update_cache: yes
+
+  - name: Pidgin sipe (Office communicator enabled)
+    apt:
+      name: pidgin-sipe
+      state: present
+
+      update_cache: yes
+  - name: Evolution mail client
+    apt:
+      name: evolution
+      state: present
+      update_cache: yes
+    tags:
+        - evolution
+
+  - name: Evolution mail client EWS plugin
+    apt:
+      name: evolution-ews
+      state: present
+      update_cache: yes
+    tags:
+        - evolution
+
+# Python stuff YAAY!
+
+  - name: Python 2 dev package
+    apt: name=python-dev
+    tags:
+      - python
+      - python2
+
+  - name: Python 3 dev package
+    apt: name=python3-dev
+    tags:
+      - python
+      - python3
+
+  - name: IPython for python 2 and 3
+    apt: name={{ item }}
+    with_items:
+      - ipython
+      - ipython3
+    tags:
+      - python
+      - ipython
+
+  - name: Virtualenvwrapper
+    apt: name=virtualenvwrapper
+    tags:
+      - python
+      - virtualenvwrapper
+
+  - name: Graphical VIM interface
+    apt: name=vim-gtk3
+    tags:
+      - vim-gtk3
+
+- import_playbook: virtual_box.yaml
+- import_playbook: i3_wm_and_misc.yaml
+- import_playbook: sublime_text.yaml
+- import_playbook: users_management.yaml

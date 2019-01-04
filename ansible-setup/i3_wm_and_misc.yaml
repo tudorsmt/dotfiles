@@ -1,0 +1,49 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Download the key debian package for i3-wm
+      get_url:
+        url: http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2018.01.30_all.deb
+        dest: /tmp/i3-wm-keyring.deb
+        checksum: sha256:baa43dbbd7232ea2b5444cae238d53bebb9d34601cc000e82f11111b1889078a
+
+    - name: Install the i3-wm key
+      apt:
+        deb: /tmp/i3-wm-keyring.deb
+
+    - name: Install the repository
+      apt_repository:
+        repo: deb http://debian.sur5r.net/i3/ {{ ansible_distribution_release }} universe
+        state: present
+        filename: sur5r-i3
+        update_cache: yes
+
+    - name: Install the i3-wm
+      apt:
+        name: i3
+
+    - name: Install the Rofi repository
+      apt_repository:
+        repo: ppa:jasonpleau/rofi
+        state: present
+        update_cache: yes
+
+
+    - name: install the miscellaneous packages to enhance the i3-wm experience
+      apt:
+        name:
+          - i3blocks # status monitor for the top bar
+          - kbdd # Keyboard layout switcher
+          - compton # compositor (handles transparency)
+          - rofi # application switcher and magic
+          - nitrogen # wallpaper manger
+          - arandr
+          - gnome-keyring
+          - gnome-terminal
+          - gnome-system-monitor
+          - gnome-disk-utility
+          - network-manager
+          - network-manager-gnome
+          - xfce4-volumed
+          - xautolock

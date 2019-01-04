@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: VirtualBox repository key => 16.04
+      apt_key:
+        url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+        state: present
+      when: ansible_distribution_version >= '16.04'
+      tags:
+          - virtualbox
+
+    - name: Virtual Box repository >= 16.04
+      apt_repository:
+        repo: 'deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
+        update_cache: yes
+      when: ansible_distribution_version >= '16.04'
+      tags:
+          - virtualbox
+
+    - name: VirtualBox 6.0 install
+      apt:
+        name: virtualbox-6.0
+        state: present
+      tags:
+          - virtualbox

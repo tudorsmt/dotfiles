@@ -1,0 +1,51 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+# Ubuntu Unity indicators
+  - name: Indicator multiload
+    apt:
+       name: indicator-multiload
+    tags:
+        - indicator-multiload
+        - indicators
+
+  - name: Pidgin indicator PPA
+    apt_repository:
+        repo: ppa:nilarimogard/webupd8
+    tags:
+        - indicators
+        - pidgin-indicator
+
+  - name: Pidgin indicator
+    apt:
+        name: pidgin-indicator
+        state: present
+        update_cache: yes
+    tags:
+        - indicators
+        - pidgin-indicator
+
+  - name: Copyq indicator PPA
+    apt_repository:
+        repo: ppa:noobslab/indicators
+    tags:
+        - indicators
+        - copyq-indicator
+
+  - name: Copyq indicator
+    apt:
+        name: copyq
+        state: present
+        update_cache: yes
+    tags:
+        - indicators
+        - copyq-indicator
+
+  - name: Evolution indicator
+    apt:
+      name: evolution-indicator
+      state: present
+      update_cache: yes
+    tags:
+        - evolution

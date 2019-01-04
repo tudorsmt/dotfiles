@@ -1,0 +1,22 @@
+- hosts: localhost
+  name: Handle user and groups management
+  become: yes
+  tasks:
+
+  - name: Add current user to dialout group
+    user:
+        name: "{{ ansible_ssh_user }}"
+        groups: dialout
+        append: yes
+    tags:
+      - groups
+      - dialout-group
+
+  - name: Add current user to vboxusers group
+    user:
+        name: "{{ ansible_ssh_user }}"
+        groups: vboxusers
+        append: yes
+    tags:
+      - vboxusers-group
+      - groups
