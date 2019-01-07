@@ -76,6 +76,13 @@
         - git
         - git-cola
 
+  - name: Tig - GUI UI in the terminal
+    apt:
+        name: tig
+    tags:
+        - git
+        - tig
+
   - name: Subversion
     apt: name=subversion
     tags:
