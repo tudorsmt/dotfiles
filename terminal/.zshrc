@@ -123,6 +123,10 @@ if [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then
     source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 
+if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
+    source ~/.local/bin/virtualenvwrapper.sh
+fi
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
