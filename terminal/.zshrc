@@ -128,7 +128,7 @@ if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
 fi
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+    source ~/.bash_aliases
 fi
 
 if [ -f ~/.oh-my-zsh/custom/functions/helpers ]; then
