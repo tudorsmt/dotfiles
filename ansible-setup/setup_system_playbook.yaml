@@ -284,7 +284,9 @@
       - ipython
 
   - name: Virtualenvwrapper
-    apt: name=virtualenvwrapper
+    pip:
+      name: virtualenvwrapper
+      extra_args: --user
     tags:
       - python
       - virtualenvwrapper
