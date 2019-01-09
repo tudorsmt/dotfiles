@@ -168,9 +168,12 @@
     tags:
         - keepassx
 
-  - name: OpenVPN Gnome GUI
+  - name: OpenVPN Gnome GUI, helpers
     apt:
-        name: network-manager-openvpn-gnome
+        name:
+          - network-manager-openvpn-gnome
+          - openvpn
+          - openvpn-systemd-resolved  # DNS helper for OpenVPN in Ubuntu 18.04+
         state: present
         update_cache: yes
     tags:
