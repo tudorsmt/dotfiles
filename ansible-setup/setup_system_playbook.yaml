@@ -144,6 +144,11 @@
       - exfat
       - filesystems
 
+  - name: Install misc tools
+    apt:
+      name:
+        - sshfs # mount remote file systems through SSH
+
   - name: PPA graphics drivers
     apt_repository:
       repo: ppa:graphics-drivers/ppa

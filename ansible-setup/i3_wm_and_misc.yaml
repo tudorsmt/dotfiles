@@ -38,6 +38,7 @@
           - compton # compositor (handles transparency)
           - rofi # application switcher and magic
           - nitrogen # wallpaper manger
+          - lxappearance # Change GTK theme and other misc things
           - arandr
           - gnome-keyring
           - gnome-terminal
