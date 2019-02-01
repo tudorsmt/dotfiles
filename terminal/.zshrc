@@ -127,6 +127,10 @@ if [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
     source ~/.local/bin/virtualenvwrapper.sh
 fi
 
+if ! [[ $PATH =~ "$HOME/Android/Sdk/platform-tools" ]] && [ -d ~/Android/Sdk/platform-tools ]; then
+    export PATH=$PATH:~/Android/Sdk/platform-tools
+fi
+
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
