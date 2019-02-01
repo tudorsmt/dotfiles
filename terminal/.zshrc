@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-if [ -d "$HOME/bin" ]; then
+if [[ $PATH =~ "$HOME/bin" ]] && ! [ -d "$HOME/bin" ]; then
     export PATH=$HOME/bin:$PATH
 fi
 
