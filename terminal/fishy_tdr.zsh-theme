@@ -13,7 +13,7 @@ local user_color='green'; [ $UID -eq 0 ] && user_color='red'
 local ret_status="%(?:%{$fg_bold[green]%}✔ :%{$fg_bold[red]%}✘ )%{$reset_color%}"
 local exit_code="%{$fg_bold[red]%}%(?..%?)%{$reset_color%}"
 local prompt_char="%{$fg_bold[$user_color]%}%(!.#. $)%{$reset_color%}"
-local clock="%F{$fg_bold[200]}[%*]%f%{$reset_color%}"
+local clock="%F{$fg_bold[243]}[%*]%f%{$reset_color%}"
 
 PROMPT='${ret_status}${exit_code} %{$fg_bold[blue]%}%n@%m %{$fg[$user_color]%}$(_fishy_collapsed_wd)\
 $(git_prompt_info)$(git_prompt_status)
