@@ -236,7 +236,8 @@ bar {
 ##
 
 # set keyboard layouts and switching for them
-exec_always --no-startup-id  setxkbmap -layout us,de,ro -variant euro,, -option ctrl:nocaps,grp:win_space_toggle,lv3:ralt_switch
+exec_always --no-startup-id  setxkbmap -layout us,de,ro -variant euro,, \
+                                       -option ctrl:nocaps,grp:win_space_toggle,lv3:ralt_switch
 
 # Window-specific settings, get it with `xprop` command
 for_window [class="Keepassx"] floating enable
