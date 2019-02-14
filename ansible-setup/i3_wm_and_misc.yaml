@@ -37,6 +37,7 @@
           - kbdd # Keyboard layout switcher
           - compton # compositor (handles transparency)
           - rofi # application switcher and magic
+          - python-dbus # Python Dbus enabler Used in script for Spotify status
           - nitrogen # wallpaper manger
           - lxappearance # Change GTK theme and other misc things
           - arandr
