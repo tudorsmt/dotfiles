@@ -4,14 +4,39 @@ revert_dpms() {
     xset dpms 0 0 0
 }
 
+is_spotify_playing() {
+     dbus-send --print-reply --session \
+               --dest=org.mpris.MediaPlayer2.spotify \
+                    /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get \
+                    string:'org.mpris.MediaPlayer2.Player' string:'PlaybackStatus' | \
+        grep "Playing"
+}
+
+spotify_control() {
+    # Possible Actions: Play, Pause, Stop, PlayPause
+    # more: https://community.spotify.com/t5/Desktop-Linux/SOLVED-Linux-Spotify-DBus-MPRIS2-support-not-fully-working/td-p/1208249
+    action=${1-Play}
+    dbus-send  --print-reply --session --type=method_call \
+               --dest=org.mpris.MediaPlayer2.spotify \
+               /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.${action} \
+               || true
+}
+
 lock() {
     trap revert_dpms HUP INT TERM
     local has_compton=false
+    local play_after_unlock=false
+
     killall compton && has_compton=true || has_compton=false
+    is_spotify_playing && {
+        play_after_unlock=true
+        spotify_control Pause
+    }
     xset +dpms dpms 5 5 5
     i3lock -n -c 000000 -i ~/Dropbox/Wallpapers/beta.png -t
     revert_dpms
     if [ ${has_compton} ]; then compton -C -b --unredir-if-possible; fi
+    if [ "${play_after_unlock}" = "true" ]; then spotify_control Play; fi
 }
 
 wait_for_lock() {
