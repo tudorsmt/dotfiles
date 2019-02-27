@@ -41,6 +41,7 @@
           - nitrogen # wallpaper manger
           - lxappearance # Change GTK theme and other misc things
           - arandr
+          - nnn # console file manager
           - gnome-keyring
           - gnome-terminal
           - gnome-system-monitor
