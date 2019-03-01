@@ -26,14 +26,29 @@ lock() {
     trap revert_dpms HUP INT TERM
     local has_compton=false
     local play_after_unlock=false
+    local restore_sound=true
 
     killall compton && has_compton=true || has_compton=false
     is_spotify_playing && {
         play_after_unlock=true
         spotify_control Pause
     }
+    # get if sound was muted
+    amixer -D pulse get Master | grep -q "Playback.*\[off\]" && {
+        restore_sound=false
+    }
+
+    # mute sound
+    amixer -q -D pulse sset Master mute
+
     xset +dpms dpms 5 5 5
+
+    # Blocking lock process
     i3lock -n -c 000000 -i ~/Dropbox/Wallpapers/beta.png -t
+
+    # unmute sound
+    [ "${restore_sound}" = "true" ] && amixer -q -D pulse sset Master unmute
+
     revert_dpms
     if [ ${has_compton} ]; then compton -C -b --unredir-if-possible; fi
     if [ "${play_after_unlock}" = "true" ]; then spotify_control Play; fi
