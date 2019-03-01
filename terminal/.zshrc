@@ -149,3 +149,10 @@ if [ -z "${TMUX}" ]; then tmux new; fi
 fpath=(~/.oh-my-zsh/custom/functions $fpath)
 
 eval $(thefuck --alias)
+
+################
+# useful aliases
+################
+# alias that can be used to pipe stuff into the clipboard
+# eg: echo AAAAA | toclipboard
+alias toclipboard="xclip -selection clipboard"
