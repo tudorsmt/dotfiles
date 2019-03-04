@@ -88,6 +88,8 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 # # Include more information about when the command was executed, etc
 setopt EXTENDED_HISTORY
+#Ignore the following when recording history
+HISTORY_IGNORE="(ls|pwd|exit|ll|history)"
 
 # User configuration
 
