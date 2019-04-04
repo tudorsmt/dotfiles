@@ -133,6 +133,8 @@ if ! [[ $PATH =~ "$HOME/Android/Sdk/platform-tools" ]] && [ -d ~/Android/Sdk/pla
     export PATH=$PATH:~/Android/Sdk/platform-tools
 fi
 
+export ANDROID_HOME=~/Android/Sdk
+
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
