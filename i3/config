@@ -239,6 +239,10 @@ bar {
 exec_always --no-startup-id  setxkbmap -layout us,de,ro -variant euro,, \
                                        -option ctrl:nocaps,grp:win_space_toggle,lv3:ralt_switch
 
+# enable passowrd pop-up for sudo/root GUI operations
+# https://askubuntu.com/a/799419/379365
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
 # Window-specific settings, get it with `xprop` command
 for_window [class="Keepassx"] floating enable
 for_window [class="cola" instance="cola"] floating enable
