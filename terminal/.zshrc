@@ -160,3 +160,8 @@ eval $(thefuck --alias)
 # alias that can be used to pipe stuff into the clipboard
 # eg: echo AAAAA | toclipboard
 alias toclipboard="xclip -selection clipboard"
+
+# create a virtualenvironment in the .env folder with python 3
+alias qvenv="virtualenv -p python3 .env"
+# activate the python virtual environment
+alias activate="source .env/bin/activate"
