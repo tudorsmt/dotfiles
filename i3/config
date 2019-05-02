@@ -261,6 +261,10 @@ exec --no-startup-id xautolock -time 10 -locker '~/.config/i3/scripts/i3exit loc
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed
 
+# virtual KVM for laptop and desktop using the same keyboard and mouse
+exec --no-startup-id synergy
+
+
 # network manager
 exec --no-startup-id nm-applet
 
