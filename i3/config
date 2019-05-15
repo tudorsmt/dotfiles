@@ -212,6 +212,8 @@ bindsym $mod+Pause mode "$mode_system"
 
 # bindsym $mod+Shift+m exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -modi drun\,run -matching fuzzy -show'
 
+bindsym $mod+Shift+k exec --no-startup-id setxkbmap -config ~/setup/dotfiles/layout.keyboard
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
@@ -236,8 +238,7 @@ bar {
 ##
 
 # set keyboard layouts and switching for them
-exec_always --no-startup-id  setxkbmap -layout us,de,ro -variant euro,, \
-                                       -option ctrl:nocaps,grp:win_space_toggle,lv3:ralt_switch
+exec_always --no-startup-id  setxkbmap -config ~/setup/dotfiles/layout.keyboard
 
 # enable passowrd pop-up for sudo/root GUI operations
 # https://askubuntu.com/a/799419/379365

@@ -1,0 +1,5 @@
+Rules = "evdev"
+Model = "pc105"
+Layout = "us,de,ro"
+Variant = "euro,,"
+Options = "ctrl:nocaps,grp:win_space_toggle,lv3:ralt_switch"
