@@ -42,7 +42,7 @@ bindsym Mod1+F4 kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+m exec --no-startup-id i3-dmenu-desktop
+# bindsym $mod+m exec --no-startup-id i3-dmenu-desktop
 
 
 # Changing of window focus
@@ -211,6 +211,7 @@ mode "$mode_system" {
 bindsym $mod+Pause mode "$mode_system"
 
 # bindsym $mod+Shift+m exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -modi drun\,run -matching fuzzy -show'
+bindsym $mod+m exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -matching fuzzy -show drun'
 
 # force keyboard layout
 bindsym $mod+Shift+k exec --no-startup-id setxkbmap -config ~/setup/dotfiles/layout.keyboard
