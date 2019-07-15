@@ -219,6 +219,9 @@ bindsym $mod+Shift+k exec --no-startup-id setxkbmap -config ~/setup/dotfiles/lay
 # Shortcut for screen setup
 bindsym $mod+p exec arandr
 
+# Shortcut for screen setup with presets
+bindsym $mod+Shift+p exec $script_dir/display_preset.sh
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
