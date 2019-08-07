@@ -164,6 +164,9 @@ bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
+# start browser on key press
+bindsym XF86HomePage exec brave-browser
+
 # Move container to other monitors
 bindsym Mod4+Control+Left move container to output left
 bindsym Mod4+Control+Right move container to output right
