@@ -168,6 +168,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 # start browser on key press
 bindsym XF86HomePage exec brave-browser
 
+# Screenshotter tool
+bindsym Print exec xfce4-screenshooter
+
 # Move container to other monitors
 bindsym Mod4+Control+Left move container to output left
 bindsym Mod4+Control+Right move container to output right
