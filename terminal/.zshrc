@@ -165,3 +165,22 @@ alias toclipboard="xclip -selection clipboard"
 alias qvenv="virtualenv -p python3 .env"
 # activate the python virtual environment
 alias activate="source .env/bin/activate"
+
+
+#####################
+# custom key bindings
+#####################
+
+# Shamelessly stolen from https://gitlab.com/GaugeK/dots/blob/master/etc/zsh/.zshrc
+bindkey '^E' end-of-line              # Ctrl-E
+bindkey '^[[P' delete-char            # Delete
+bindkey '^[[4~' end-of-line           # End
+bindkey '^[[3~' delete-char           # Delete
+bindkey '^A' beginning-of-line        # Ctrl-A
+bindkey '^[[1;5C' forward-word        # Ctrl-RightArrow
+bindkey '^[[1;5D' backward-word       # Ctrl-LeftArrow
+bindkey '^[[H' beginning-of-line      # Home
+bindkey '^?' backward-delete-char     # Backspace
+bindkey '^[[5~' up-line-or-history    # PageUp
+bindkey '^[[6~' down-line-or-history  # PageDown
+bindkey '^[[Z' reverse-menu-complete  # Shift-Tab
