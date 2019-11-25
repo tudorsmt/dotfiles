@@ -278,7 +278,7 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed
 
 # virtual KVM for laptop and desktop using the same keyboard and mouse
-exec --no-startup-id synergy
+exec --no-startup-id barrier
 
 
 # network manager
