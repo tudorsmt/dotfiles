@@ -68,6 +68,10 @@ source $ZSH/oh-my-zsh.sh
 # cdpath, go there
 setopt AUTO_CD
 
+# Zsh has a nice feature where it can tell you whether the previous command did
+# or didn't have a trailing newline. You can customize what gets printed in this case.
+# This will print a red block instead of inverted % (or inverted # when you are root).
+PROMPT_EOL_MARK='%K{red} '
 
 ### History settings
 HISTSIZE=10000000
