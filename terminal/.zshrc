@@ -169,7 +169,7 @@ alias toclipboard="xclip -selection clipboard"
 alias qvenv="virtualenv -p python3 .env"
 # activate the python virtual environment
 alias activate="source .env/bin/activate"
-
+alias unlu="sudo apt update && apt list --upgradeable"
 
 #####################
 # custom key bindings
