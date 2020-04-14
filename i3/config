@@ -289,3 +289,5 @@ exec --no-startup-id nm-applet
 
 # attempt to setup the displays, if the current situation is known
 exec --no-startup-id $script_dir/setup_displays.sh
+
+exec --no-startup-id $script_dir/start_syncthing.sh
