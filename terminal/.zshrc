@@ -171,6 +171,9 @@ alias qvenv="virtualenv -p python3 .env"
 alias activate="source .env/bin/activate"
 alias unlu="sudo apt update && apt list --upgradeable"
 
+# The git cola snap doesn't install the "cola" binary
+alias cola="git-cola"
+
 #####################
 # custom key bindings
 #####################
