@@ -266,6 +266,7 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 for_window [class="Keepassx"] floating enable
 for_window [class="cola" instance="cola"] floating enable
 for_window [title="^Android Emulator - .*"] floating enable
+for_window [title="Microsoft Teams Notification"] floating enable
 
 exec --no-startup-id $script_dir/start-gnome-keyring.sh
 
