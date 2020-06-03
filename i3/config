@@ -50,18 +50,27 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
 
 # Swap windows around, visually
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+\; split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+' split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -187,7 +196,8 @@ bindsym Mod4+Control+Shift+Up move workspace to output up
 bindsym Mod4+Control+Shift+Down move workspace to output down
 
 # lock screen
-bindsym $mod+l exec --no-startup-id $script_dir/i3exit lock
+# lock with Mod+Escape , l
+#bindsym $mod+l exec --no-startup-id $script_dir/i3exit lock
 
 # Change workspace left-right
 bindsym Control+Mod1+Right workspace next_on_output
@@ -229,7 +239,7 @@ bindsym XF86Sleep mode "$mode_system"
 bindsym $mod+m exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -matching fuzzy -show drun'
 
 # force keyboard layout
-bindsym $mod+Shift+k exec --no-startup-id setxkbmap -config ~/setup/dotfiles/layout.keyboard
+bindsym $mod+Shift+f12 exec --no-startup-id setxkbmap -config ~/setup/dotfiles/layout.keyboard
 
 # Shortcut for screen setup
 bindsym $mod+p exec arandr
