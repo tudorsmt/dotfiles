@@ -308,3 +308,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id $script_dir/setup_displays.sh
 
 exec --no-startup-id $script_dir/start_syncthing.sh
+
+# snixembed - proxy StatusNotifierItems as XEmbedded systemtray-spec icons
+exec --no-startup-id ~/bin/snixembed
