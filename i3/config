@@ -239,7 +239,7 @@ bindsym XF86Sleep mode "$mode_system"
 bindsym $mod+m exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -matching fuzzy -show drun'
 
 # force keyboard layout
-bindsym $mod+Shift+f12 exec --no-startup-id setxkbmap -config ~/setup/dotfiles/layout.keyboard
+bindsym $mod+Shift+F12 exec --no-startup-id setxkbmap -config ~/setup/dotfiles/layout.keyboard
 
 # Shortcut for screen setup
 bindsym $mod+p exec arandr
