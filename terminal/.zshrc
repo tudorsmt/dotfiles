@@ -156,7 +156,7 @@ if [ -z "${TMUX}" ]; then tmux new; fi
 
 fpath=(~/.oh-my-zsh/custom/functions $fpath)
 
-eval $(thefuck --alias)
+which thefuck 2>&1 > /dev/null && eval $(thefuck --alias)
 
 ################
 # useful aliases
