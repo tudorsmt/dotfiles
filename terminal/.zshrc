@@ -60,7 +60,8 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting vagrant zsh-completions command-not-found docker tmux)
+plugins=(git zsh-syntax-highlighting vagrant zsh-completions command-not-found docker tmux direnv)
+
 # Install brew autocomplete
 if type brew &>/dev/null
 then
