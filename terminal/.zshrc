@@ -164,6 +164,8 @@ fpath=(~/.oh-my-zsh/custom/functions $fpath)
 
 which thefuck 2>&1 > /dev/null && eval $(thefuck --alias)
 
+command -v moar 2>&1 > /dev/null && export PAGER=moar
+
 ################
 # useful aliases
 ################
@@ -179,6 +181,9 @@ alias unlu="sudo apt update && apt list --upgradeable"
 
 # The git cola snap doesn't install the "cola" binary
 alias cola="git-cola"
+
+# micro editor
+alias mi="micro"
 
 #####################
 # custom key bindings
