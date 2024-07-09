@@ -166,6 +166,14 @@ which thefuck 2>&1 > /dev/null && eval $(thefuck --alias)
 
 command -v moar 2>&1 > /dev/null && export PAGER=moar
 
+
+# kubernetes / k9s
+if [ -f ~/.autocomplete.k9s.zsh ]; then
+	source ~/.autocomplete.k9s.zsh;
+fi
+
+export KUBECONFIG="$HOME/.kube/config$(for file in $HOME/.kube/generated/*; do echo -n ":$file"; done)"
+
 ################
 # useful aliases
 ################
