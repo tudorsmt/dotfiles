@@ -61,6 +61,11 @@ DISABLE_AUTO_TITLE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-syntax-highlighting vagrant zsh-completions command-not-found docker tmux)
+# Install brew autocomplete
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -191,3 +196,10 @@ bindkey '^?' backward-delete-char     # Backspace
 bindkey '^[[5~' up-line-or-history    # PageUp
 bindkey '^[[6~' down-line-or-history  # PageDown
 bindkey '^[[Z' reverse-menu-complete  # Shift-Tab
+
+
+###
+# Homebrew
+###
+export HOMEBREW_AUTO_UPDATE_SECS="86400"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
