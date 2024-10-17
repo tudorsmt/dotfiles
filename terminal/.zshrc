@@ -216,4 +216,11 @@ bindkey '^[[Z' reverse-menu-complete  # Shift-Tab
 # Homebrew
 ###
 export HOMEBREW_AUTO_UPDATE_SECS="86400"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+if [ -z "$HOMEBREW_PREFIX" ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv | egrep -v '\bPATH=')"
+    export PATH="$PATH:${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/sbin"
+fi
+# this adds the brew bin paths to the start of $PATH, breaking
+# system package installs
+#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
