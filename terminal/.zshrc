@@ -155,7 +155,7 @@ fi
 # disable the grv alias to use https://github.com/rgburke/grv
 unalias grv
 
-eval `keychain --eval ~/.ssh/*_rsa`
+eval `keychain --eval ~/.ssh/*_rsa ~/.ssh/*id_ed25519`
 
 # start TMUX if it's not running
 if [ -z "${TMUX}" ]; then tmux new; fi
