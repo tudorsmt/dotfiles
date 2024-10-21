@@ -224,3 +224,7 @@ fi
 # this adds the brew bin paths to the start of $PATH, breaking
 # system package installs
 #eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Bring back verbose docker build!
+#v https://docs.docker.com/build/building/variables/#buildkit_progress
+export BUILDKIT_PROGRESS=plain
