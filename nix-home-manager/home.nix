@@ -82,4 +82,14 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # See .desktop and icon in ROOT/misc
+  # Needs to have nixGL installed to work
+  programs.alacritty.enable = true;
+  home.file.".local/share/applications/Alacritty.desktop" = {
+    source = "/home/tudor/setup/dotfiles/misc/desktop/Alacritty.desktop";
+  };
+  home.file.".local/share/icons/hicolor/scalable/apps/Alacritty.svg" = {
+    source = "/home/tudor/setup/dotfiles/misc/icons/Alacritty.svg";
+  };
 }
