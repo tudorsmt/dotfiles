@@ -24,6 +24,7 @@
     pkgs.btop
     pkgs.cmatrix
     pkgs.delta
+    pkgs.eza
     pkgs.fd
     pkgs.git-extras
     pkgs.iperf
