@@ -92,4 +92,61 @@
   home.file.".local/share/icons/hicolor/scalable/apps/Alacritty.svg" = {
     source = "/home/tudor/setup/dotfiles/misc/icons/Alacritty.svg";
   };
+
+  dconf.settings = {
+    "org/gnome/desktop/wm/keybindings" = {
+        close = ["<Alt>F4"
+                 "<Super>Q"];
+        maximize-horizontally = ["<Shift><Super>h"];
+        maximize-vertically = ["<Shift><Super>v"];
+        move-to-monitor-down = ["<Super><Shift>Down"];
+        move-to-monitor-left = ["<Super><Shift>Left"];
+        move-to-monitor-right = ["<Super><Shift>Right"];
+        move-to-monitor-up = ["<Super><Shift>Up"];
+        move-to-workspace-left = ["<Shift><Control><Alt>Left"];
+        move-to-workspace-right = ["<Shift><Control><Alt>Right"];
+        switch-group = ["<Super>Above_Tab" "<Alt>Above_Tab"];
+        switch-group-backward = ["<Shift><Super>Above_Tab"
+                                 "<Shift><Alt>Above_Tab"];
+        switch-to-workspace-1 = ["<Super>F1"];
+        switch-to-workspace-2 = ["<Super>F2"];
+        switch-to-workspace-3 = ["<Super>F3"];
+        switch-to-workspace-4 = ["<Super>F4"];
+        switch-to-workspace-last = ["<Super>End"];
+        switch-to-workspace-left = ["<Control><Alt>Left"];
+        switch-to-workspace-right = ["<Control><Alt>Right"];
+        switch-windows = ["<Alt>Tab"];
+        switch-windows-backward = ["<Shift><Alt>Tab"];
+        toggle-maximized = ["<Super>Up"];
+      };
+      "org/gnome/settings-daemon/plugins/media-keys" = {
+          custom-keybindings = [
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
+          ];
+        };
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+          name="Terminal";
+          command="env WAYLAND_DISPLAY= nixGL alacritty";
+          binding="<Super>Return";
+        };
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+          name="vscode";
+          command="flatpak run com.visualstudio.code -n --profile tudor";
+          binding="<Shift><Super>Return";
+        };
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+          name="flameshot";
+          command="/home/tudor/programs/Flameshot-12.1.0.x86_64.AppImage gui";
+          binding="<Shift><Super>s";
+        };
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+          name="Flameshot Take Screenshot";
+          command="flatpak run org.flameshot.Flameshot gui";
+          binding="<Shift><Super>Print";
+        };
+  };
+
 }
