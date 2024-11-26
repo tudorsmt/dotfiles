@@ -92,6 +92,9 @@
   home.file.".local/share/icons/hicolor/scalable/apps/Alacritty.svg" = {
     source = "/home/tudor/setup/dotfiles/misc/icons/Alacritty.svg";
   };
+  home.file.".config/alacritty.toml" = {
+    source = "/home/tudor/setup/dotfiles/alacritty.toml";
+  };
 
   dconf.settings = {
     "org/gnome/desktop/wm/keybindings" = {
