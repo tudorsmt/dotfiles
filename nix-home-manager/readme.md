@@ -6,6 +6,15 @@ After installing nix home manager, link home.nix to
 ~/.config/home-manager/home.nix
 ```
 
+## Cleaning up the cache
+
+<https://nixos.wiki/wiki/Cleaning_the_nix_store>
+
+```bash
+nix-store --gc
+```
+
+
 ## Manage Gnome settings with Home Manager
 
 Reference:
