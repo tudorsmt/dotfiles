@@ -193,6 +193,11 @@ alias cola="git-cola"
 # micro editor
 alias mi="micro"
 
+alias b="byobu"
+alias ns="notify-send"
+alias lg="lazygit"
+alias hm="home-manager"
+
 #####################
 # custom key bindings
 #####################
