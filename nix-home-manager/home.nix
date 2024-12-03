@@ -29,6 +29,7 @@
     pkgs.git-extras
     pkgs.iperf
     pkgs.k9s
+    pkgs.kubectl
     pkgs.lazygit
     pkgs.neofetch
     pkgs.tig
