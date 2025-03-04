@@ -13,7 +13,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "25.05"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -26,14 +26,18 @@
     pkgs.delta
     pkgs.eza
     pkgs.fd
+    pkgs.gh
     pkgs.git-extras
+    pkgs.headsetcontrol
     pkgs.iperf
     pkgs.k9s
     pkgs.kubectl
     pkgs.lazygit
     pkgs.neofetch
+    pkgs.rustup
+    pkgs.superfile
     pkgs.sysstat
-    pkgs.tig 
+    pkgs.tig
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
