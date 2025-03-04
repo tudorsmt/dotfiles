@@ -99,6 +99,27 @@
     source = "/home/tudor/setup/dotfiles/alacritty.toml";
   };
 
+### Ghostty
+###### Disabled for now
+  # programs.ghostty = {
+  #   enable = true;
+  # };
+  # home.file.".local/share/applications/Ghostty.desktop" = {
+  #   source = "/home/tudor/setup/dotfiles/misc/desktop/Ghostty.desktop";
+  # };
+  # home.file.".local/share/icons/hicolor/32x32/apps/Ghostty.png" = {
+  #   source = "/home/tudor/setup/dotfiles/misc/icons/ghostty/icon_32.png";
+  # };
+  # home.file.".local/share/icons/hicolor/128x128/apps/Ghostty.png" = {
+  #   source = "/home/tudor/setup/dotfiles/misc/icons/ghostty/icon_128.png";
+  # };
+  # home.file.".local/share/icons/hicolor/256x256/apps/Ghostty.png" = {
+  #   source = "/home/tudor/setup/dotfiles/misc/icons/ghostty/icon_256.png";
+  # };
+  # home.file.".local/share/icons/hicolor/512x512/apps/Ghostty.png" = {
+  #   source = "/home/tudor/setup/dotfiles/misc/icons/ghostty/icon_512.png";
+  # };
+
   dconf.settings = {
     "org/gnome/desktop/wm/keybindings" = {
         close = ["<Alt>F4"

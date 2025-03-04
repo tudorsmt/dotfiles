@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=Application
+TryExec=ghostty
+Exec=env WAYLAND_DISPLAY= nixGL ghostty
+Icon=Ghostty
+Terminal=false
+Categories=System;TerminalEmulator;
+
+Name=Ghostty
+GenericName=Terminal
+Comment=A fast, cross-platform, OpenGL terminal emulator
+StartupNotify=true
+StartupWMClass=Ghostty
+Actions=New;
+
+[Desktop Action New]
+Name=New Terminal
+Exec=env WAYLAND_DISPLAY= nixGL ghostty
