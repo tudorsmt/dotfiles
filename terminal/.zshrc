@@ -60,7 +60,15 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting vagrant zsh-completions command-not-found docker tmux direnv)
+plugins=(
+    command-not-found
+    direnv
+    docker 
+    git
+    vagrant
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
 
 # Install brew autocomplete
 if type brew &>/dev/null
@@ -147,6 +155,10 @@ export ANDROID_HOME=~/Android/Sdk
 
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
+fi
+
+if [ -z "${ZPROFILE_LOADED-}" ]; then
+    source ~/.zprofile
 fi
 
 if [ -f ~/.oh-my-zsh/custom/functions/helpers ]; then
