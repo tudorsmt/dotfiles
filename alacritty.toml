@@ -200,7 +200,7 @@ multiplier = 3
 # Default: true
 
 [font]
-normal = { family = "Comic Mono", style = "Regular" }
+normal = { family = "ComicMonoNF", style = "Regular" }
 size = 8
 builtin_box_drawing = true
 
