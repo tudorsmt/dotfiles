@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-if [[ $PATH =~ "$HOME/bin" ]] && ! [ -d "$HOME/bin" ]; then
+if ! [[ $PATH =~ "$HOME/bin" ]] && [ -d "$HOME/bin" ]; then
     export PATH=$HOME/bin:$PATH
 fi
 
@@ -63,7 +63,7 @@ DISABLE_AUTO_TITLE="true"
 plugins=(
     command-not-found
     direnv
-    docker 
+    docker
     git
     vagrant
     zsh-autosuggestions
@@ -157,7 +157,7 @@ if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
 
-if [ -z "${ZPROFILE_LOADED-}" ]; then
+if [ -z "${ZPROFILE_LOADED-}" ] && [[ -e ~/.zprofile ]]; then
     source ~/.zprofile
 fi
 
@@ -167,10 +167,11 @@ fi
 # disable the grv alias to use https://github.com/rgburke/grv
 unalias grv
 
-eval `keychain --eval ~/.ssh/*_rsa ~/.ssh/*id_ed25519`
-
-# start TMUX if it's not running
-if [ -z "${TMUX}" ]; then tmux new; fi
+if command -v keychain 2>&1 > /dev/null; then
+    if find ~/.ssh -name "*_rsa" -o -name "*id_ed25519" | grep -q ".*" 2>&1 > /dev/null; then
+        eval $(keychain --eval $(find ~/.ssh -name "*_rsa" -o -name "*id_ed25519"))
+    fi
+fi
 
 fpath=(~/.oh-my-zsh/custom/functions $fpath)
 
@@ -183,8 +184,9 @@ command -v moar 2>&1 > /dev/null && export PAGER=moar
 if [ -f ~/.autocomplete.k9s.zsh ]; then
 	source ~/.autocomplete.k9s.zsh;
 fi
-
-export KUBECONFIG="$HOME/.kube/config$(for file in $HOME/.kube/generated/*; do echo -n ":$file"; done)"
+if [ -d ${HOME}/.kube/config ] && find ${HOME}/.kube/config | grep -q ".*" 2>&1 > /dev/null; then
+    export KUBECONFIG="${HOME}/.kube/config$(for file in ${HOME}/.kube/generated/*; do echo -n ":$file"; done)"
+fi
 
 ################
 # useful aliases
@@ -234,8 +236,12 @@ bindkey '^[[Z' reverse-menu-complete  # Shift-Tab
 export BUILDKIT_PROGRESS=plain
 
 ### Home Manager integrations
-source ${HOME}/.nix-profile/etc/profile.d/hm-session-vars.sh
-eval "$(uv generate-shell-completion zsh)"
+if [[ -e ${HOME}/.nix-profile/etc/profile.d/hm-session-vars.sh ]]; then
+    source ${HOME}/.nix-profile/etc/profile.d/hm-session-vars.sh
+fi
+if command -v uv; then
+    eval "$(uv generate-shell-completion zsh)"
+fi
 
 ### Start terminal multiplexer
 if [ -z "${TMUX}" ]; then tmux new; fi
