@@ -208,9 +208,10 @@ alias cola="git-cola"
 alias mi="micro"
 
 alias b="byobu"
-alias ns="notify-send"
-alias lg="lazygit"
 alias hm="home-manager"
+alias k="kubectl"
+alias lg="lazygit"
+alias ns="notify-send"
 
 #####################
 # custom key bindings
