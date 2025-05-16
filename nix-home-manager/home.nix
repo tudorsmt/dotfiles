@@ -32,6 +32,7 @@
     pkgs.iperf
     pkgs.k9s
     pkgs.kubectl
+    pkgs.lazydocker
     pkgs.lazygit
     pkgs.neofetch
     pkgs.rustup
