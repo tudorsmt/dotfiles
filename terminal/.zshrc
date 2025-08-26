@@ -244,5 +244,8 @@ if command -v uv; then
     eval "$(uv generate-shell-completion zsh)"
 fi
 
+# KREW plugin for kubectl
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 ### Start terminal multiplexer
 if [ -z "${TMUX}" ]; then tmux new; fi
