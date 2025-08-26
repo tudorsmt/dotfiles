@@ -247,5 +247,6 @@ fi
 # KREW plugin for kubectl
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+### Execute as last item in the config
 ### Start terminal multiplexer
 if [ -z "${TMUX}" ]; then tmux new; fi
