@@ -25,8 +25,8 @@
 # args = ["-l"]
 
 [terminal.shell]
-program = "/usr/bin/zsh"
-args = ["-l"]
+program = "/usr/bin/env"
+args = ["zsh"]
 
 
 # ENV
