@@ -171,7 +171,7 @@
         };
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
           name="Terminal";
-          command="env WAYLAND_DISPLAY= nixGL alacritty";
+          command="flatpak run app.devsuite.Ptyxis --new-window";
           binding="<Super>Return";
         };
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
