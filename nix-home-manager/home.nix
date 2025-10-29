@@ -36,7 +36,9 @@
     pkgs.krew
     pkgs.lazydocker
     pkgs.lazygit
+    pkgs.lf
     pkgs.neofetch
+    pkgs.neovim
     pkgs.rustup
     pkgs.superfile
     pkgs.sysstat
@@ -55,13 +57,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
-  programs.lf = {
-    enable = true;
-    keybindings = {
-      X = ":delete";
-    };
-  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -112,6 +107,14 @@
   };
   home.file.".config/alacritty.toml" = {
     source = "/home/tudor/setup/dotfiles/alacritty.toml";
+  };
+
+  # LF file manager
+  home.file.".config/lf/lfrc" = {
+    source = "/home/tudor/setup/dotfiles/terminal/lf/lfrc";
+  };
+  home.file.".config/lf/icons" = {
+    source = "/home/tudor/setup/dotfiles/terminal/lf/icons";
   };
 
 ### Ghostty
