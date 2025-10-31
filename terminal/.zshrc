@@ -66,7 +66,6 @@ plugins=(
     docker
     git
     vagrant
-    zsh-autosuggestions
     zsh-syntax-highlighting
 )
 
