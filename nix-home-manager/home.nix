@@ -32,6 +32,8 @@
     pkgs.headsetcontrol
     pkgs.iperf
     pkgs.k9s
+    # Text editor
+    pkgs.helix
     pkgs.kubectl
     pkgs.krew
     pkgs.lazydocker
@@ -44,6 +46,7 @@
     pkgs.sysstat
     pkgs.tig
     pkgs.uv
+    pkgs.yazi
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
