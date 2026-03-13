@@ -39,13 +39,13 @@
     pkgs.lazydocker
     pkgs.lazygit
     pkgs.lf
-    pkgs.neofetch
     pkgs.neovim
     pkgs.rustup
     pkgs.superfile
     pkgs.sysstat
     pkgs.tig
     pkgs.uv
+    # file manager
     pkgs.yazi
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
