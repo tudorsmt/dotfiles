@@ -29,6 +29,8 @@
     pkgs.fd
     pkgs.gh
     pkgs.git-extras
+    # TUI for ping, with graph
+    pkgs.gping
     pkgs.headsetcontrol
     pkgs.iperf
     pkgs.k9s
