@@ -36,6 +36,15 @@
     pkgs.k9s
     # Text editor
     pkgs.helix
+    ### Language server plugins for Helix
+    pkgs.bash-language-server
+    pkgs.dockerfile-language-server
+    pkgs.docker-compose-language-service
+    pkgs.marksman
+    pkgs.nil
+    pkgs.nixfmt
+    pkgs.yaml-language-server
+    ### / Language server plugins for Helix
     pkgs.kubectl
     pkgs.krew
     pkgs.lazydocker
@@ -77,7 +86,6 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
-
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
