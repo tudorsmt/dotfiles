@@ -240,7 +240,7 @@ export BUILDKIT_PROGRESS=plain
 if [[ -e ${HOME}/.nix-profile/etc/profile.d/hm-session-vars.sh ]]; then
     source ${HOME}/.nix-profile/etc/profile.d/hm-session-vars.sh
 fi
-if command -v uv; then
+if command -v uv 2>&1 > /dev/null; then
     eval "$(uv generate-shell-completion zsh)"
 fi
 
