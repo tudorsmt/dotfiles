@@ -67,6 +67,7 @@ plugins=(
     git
     vagrant
     zsh-syntax-highlighting
+    zsh-fzf-history-search
 )
 
 # Install brew autocomplete
@@ -89,22 +90,16 @@ PROMPT_EOL_MARK='%K{red} '
 ### History settings
 HISTSIZE=10000000
 SAVEHIST=10000000
-# Share history between all sessions
-# setopt SHARE_HISTORY
-# Expire duplicate entries first when trimming history.
-setopt HIST_EXPIRE_DUPS_FIRST
-# Allow multiple terminal sessions to all append to one zsh command history
-setopt APPEND_HISTORY
-# # Add comamnds as they are typed, don't wait until shell exit
-setopt INC_APPEND_HISTORY
-# # Do not write events to history that are duplicates of previous events
-setopt HIST_IGNORE_DUPS
-# # When searching history don't display results already cycled through twice
-setopt HIST_FIND_NO_DUPS
-# # Remove extra blanks from each command line being added to history
-setopt HIST_REDUCE_BLANKS
-# # Include more information about when the command was executed, etc
-setopt EXTENDED_HISTORY
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don\'t record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don\'t record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don\'t write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 #Ignore the following when recording history
 HISTORY_IGNORE="(ls|pwd|exit|ll|history)"
 
@@ -245,6 +240,7 @@ fi
 
 # KREW plugin for kubectl
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export TERM=xterm-256color
 
 ### Execute as last item in the config
 ### Start terminal multiplexer
