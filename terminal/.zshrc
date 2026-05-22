@@ -161,9 +161,15 @@ fi
 # disable the grv alias to use https://github.com/rgburke/grv
 unalias grv
 
-if command -v keychain 2>&1 > /dev/null; then
-    if find ~/.ssh -name "*_rsa" -o -name "*id_ed25519" | grep -q ".*" 2>&1 > /dev/null; then
-        eval $(keychain --eval $(find ~/.ssh -name "*_rsa" -o -name "*id_ed25519"))
+# Since version 121 vscode sets VSCODE_AGENT environment variable for agents. Do not import
+# SSH keys for them
+if [ -z "${VSCODE_AGENT-}" ]; then
+    if command -v keychain 2>&1 > /dev/null; then
+        if keychain -l | grep -q "The agent has no identities"; then
+            if find ~/.ssh -name "*_rsa" -o -name "*id_ed25519" | grep -q ".*" 2>&1 > /dev/null; then
+                eval $(keychain --eval $(find ~/.ssh -name "*_rsa" -o -name "*id_ed25519"))
+            fi
+        fi
     fi
 fi
 
@@ -244,4 +250,5 @@ export TERM=xterm-256color
 
 ### Execute as last item in the config
 ### Start terminal multiplexer
-if [ -z "${TMUX}" ]; then tmux new; fi
+### With version 121, vscode sets VSCODE_AGENT variable when spawning terminal agents. Do not start tmux for them
+if [ -z "${TMUX}" ] && [ -z "${VSCODE_AGENT-}" ]; then tmux new; fi
