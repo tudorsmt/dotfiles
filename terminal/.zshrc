@@ -251,4 +251,6 @@ export TERM=xterm-256color
 ### Execute as last item in the config
 ### Start terminal multiplexer
 ### With version 121, vscode sets VSCODE_AGENT variable when spawning terminal agents. Do not start tmux for them
-if [ -z "${TMUX}" ] && [ -z "${VSCODE_AGENT-}" ]; then tmux new; fi
+if [ -z "${TMUX}" ] && \
+    [ -z "${VSCODE_AGENT-}" ] && \
+    [[ "${TERMINAL_EMULATOR-}" != *"vscode"* ]]; then tmux new; fi
