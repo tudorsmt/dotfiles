@@ -10,7 +10,23 @@ After installing nix home manager, link home.nix to
 
 <https://nixos.wiki/wiki/Cleaning_the_nix_store>
 
+Listing home manager generations:
+
+```sh
+home-manager generations
+
+# Clean up older than 30 days
+home-manager expire-generations "-30 days"
+```
+
+
+Cleaning up Nix Package Manager generations
 ```bash
+
+# remove garbage older than 30 days
+nix-collect-garbage --delete-older-than 30d
+
+# Brutally clean up everything
 nix-store --gc
 ```
 
