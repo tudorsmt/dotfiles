@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ ./neovim.nix ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "tudor";
@@ -50,7 +52,7 @@
     pkgs.lazydocker
     pkgs.lazygit
     pkgs.lf
-    pkgs.neovim
+    # neovim is installed by programs.neovim, see neovim.nix
     pkgs.rustup
     pkgs.superfile
     pkgs.sysstat
