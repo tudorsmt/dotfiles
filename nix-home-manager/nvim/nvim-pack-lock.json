@@ -4,6 +4,10 @@
       "rev": "28fe6e822ae344544c379d60fcb13c9519a1f08a",
       "src": "https://github.com/stevearc/aerial.nvim"
     },
+    "deadcolumn.nvim": {
+      "rev": "3610f79f69d0a1c5be2f00c567474a4577bd4ca8",
+      "src": "https://github.com/Bekaboo/deadcolumn.nvim"
+    },
     "gitsigns.nvim": {
       "rev": "c0862d382a35b7b45757d8d151a6a634c09bf3ce",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
@@ -16,6 +20,10 @@
       "rev": "37e52c733ada9d8d544d53a763140ef1ba404353",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
+    },
+    "vim-illuminate": {
+      "rev": "1cc33d347c574c3bd21a4852fc9ffed677c1c58c",
+      "src": "https://github.com/RRethy/vim-illuminate"
     }
   }
 }

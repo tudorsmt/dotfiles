@@ -41,6 +41,8 @@ vim.pack.add({
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/stevearc/aerial.nvim",
   { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+  "https://github.com/RRethy/vim-illuminate",
+  "https://github.com/Bekaboo/deadcolumn.nvim"
 })
 
 -- Colorscheme --------------------------------------------------------------
