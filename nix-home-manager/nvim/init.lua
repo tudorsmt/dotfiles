@@ -1,5 +1,6 @@
--- Loaded through programs.neovim.initLua (see ../neovim.nix).
--- The plugins are installed by Nix, this file only configures them.
+-- Linked to ~/.config/nvim by Home Manager (see ../neovim.nix).
+-- The plugins are installed by vim.pack, which keeps their revisions in
+-- nvim-pack-lock.json next to this file.
 
 vim.g.mapleader = " "
 
@@ -19,6 +20,28 @@ opt.autocomplete = true
 -- Highlight columns at 80, 100, 120
 -- Draw the border after the n-th column, so it matches VSCode behavior
 opt.colorcolumn = { 81, 101, 121 }
+
+-- Install plugins
+vim.api.nvim_create_autocmd("PackChanged", {
+  group = vim.api.nvim_create_augroup("user_pack_hooks", { clear = true }),
+  callback = function(ev)
+    local data = ev.data
+    -- The parsers have to match the queries of the plugin revision
+    if data.spec.name == "nvim-treesitter" and data.kind == "update" then
+      if not data.active then
+        vim.cmd.packadd("nvim-treesitter")
+      end
+      vim.cmd("TSUpdate")
+    end
+  end,
+})
+
+vim.pack.add({
+  "https://github.com/loctvl842/monokai-pro.nvim",
+  "https://github.com/lewis6991/gitsigns.nvim",
+  "https://github.com/stevearc/aerial.nvim",
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+})
 
 -- Colorscheme --------------------------------------------------------------
 -- The "classic" filter of Monokai Pro is the original Monokai palette, which is
@@ -74,10 +97,19 @@ pcall(function()
   require("monokai-pro.theme").clear_cache()
 end)
 
-vim.cmd.colorscheme("monokai-pro")
+-- Newer than v2.1.4, the plain `monokai-pro` scheme resets the filter to "pro"
+-- and ignores the one above. Every filter has a scheme of its own.
+vim.cmd.colorscheme("monokai-pro-classic")
 
 -- Tree-sitter ----------------------------------------------------------------
--- Parsers are installed by Nix. Highlight every filetype that has one.
+-- nvim-treesitter compiles the parsers on the first start, then this is a no-op.
+-- Neovim already bundles c, lua, vim, vimdoc, query and markdown.
+require("nvim-treesitter").install({
+  "bash", "python", "yaml", "json", "toml", "nix",
+  "gitcommit", "git_rebase", "diff", "regex",
+})
+
+-- Highlight every filetype that has a parser.
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("user_treesitter", { clear = true }),
   callback = function(args)

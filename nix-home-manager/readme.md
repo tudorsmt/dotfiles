@@ -10,12 +10,15 @@ After installing nix home manager, link home.nix to
 
 Set up by [neovim.nix](./neovim.nix), which is imported from `home.nix`:
 
-- `neovim.nix` installs the plugins and the tree-sitter grammars.
-- [nvim/init.lua](./nvim/init.lua) has the options, key maps and plugin setup. Home
-  Manager writes it to `~/.config/nvim/init.lua`.
-
-Both end up as read-only files in the Nix store, so apply a change with
-`home-manager switch` and restart Neovim.
+- `neovim.nix` installs Neovim and the tools it calls (xclip, tree-sitter) and links
+  [nvim/](./nvim) to `~/.config/nvim`. The link points into this checkout, so a change
+  applies after restarting Neovim, without `home-manager switch`.
+- [nvim/init.lua](./nvim/init.lua) has the options, key maps and plugin setup.
+- The plugins are installed by Neovim's own plugin manager, `vim.pack` (Neovim 0.12+),
+  into `~/.local/share/nvim/site/pack/core/opt`. Their revisions are pinned in
+  [nvim/nvim-pack-lock.json](./nvim/nvim-pack-lock.json), commit it together with the
+  change. To update them run `:lua vim.pack.update()`, read the buffer, then `:write` to
+  apply or `:quit` to discard.
 
 The leader key is `<Space>`. Yank, delete and paste use the system clipboard
 (`clipboard=unnamedplus`) through xclip, see the note in `neovim.nix`.
@@ -27,9 +30,12 @@ The leader key is `<Space>`. Yank, delete and paste use the system clipboard
 | aerial.nvim | Symbol outline, built on tree-sitter | `<leader>o` toggle |
 | nvim-treesitter | Syntax highlighting | |
 
-The tree-sitter grammars are prebuilt by Nix, `:TSInstall` is not used. To highlight
-another language add `p.<name>` to the `withPlugins` list in `neovim.nix`. Neovim
-already bundles c, lua, vim, vimdoc, query and markdown.
+nvim-treesitter compiles the grammars on the first start, which needs `tree-sitter`, a C
+compiler, `tar` and `curl`. To highlight another language add it to the `install()` call
+in `init.lua`. Neovim already bundles c, lua, vim, vimdoc, query and markdown.
+
+The colorscheme is loaded as `monokai-pro-classic`. The plain `monokai-pro` scheme resets
+the filter to Pro (newer than v2.1.4), whatever `filter` says in `setup()`.
 
 The colorscheme tweaks are applied in `init.lua` rather than through the theme's
 `override` option, because the theme caches its highlights in
