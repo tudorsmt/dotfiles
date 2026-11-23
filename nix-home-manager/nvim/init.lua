@@ -22,10 +22,12 @@ opt.autocomplete = true
 opt.colorcolumn = { 81, 101, 121 }
 
 -- Home and End inside tmux ---------------------------------------------------
--- tmux sends them as ESC [ 1 ~ and ESC [ 4 ~, but tmux.conf sets TERM to
--- xterm-256color, whose terminfo expects ESC O H and ESC O F. Neovim then reads
--- them as the VT220 keys <Find> and <Select> and does nothing; Vim doesn't have
--- this problem. Modified keys (<C-Home>, <S-End>...) arrive correctly.
+-- tmux sends them as ESC [ 1 ~ and ESC [ 4 ~, which the tmux-256color
+-- terminfo entry (set in tmux.conf) describes. xterm-256color expects
+-- ESC O H and ESC O F instead, so with that TERM Neovim reads them as the
+-- VT220 keys <Find> and <Select> and does nothing (Vim doesn't have this
+-- problem). These maps cover panes that still report xterm-256color.
+-- Modified keys (<C-Home>, <S-End>...) arrive correctly either way.
 local home_end_modes = { "n", "i", "x", "s", "o", "c", "t" }
 vim.keymap.set(home_end_modes, "<Find>", "<Home>", { desc = "Home (tmux sends <Find>)" })
 vim.keymap.set(home_end_modes, "<Select>", "<End>", { desc = "End (tmux sends <Select>)" })
