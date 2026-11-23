@@ -41,6 +41,10 @@ The colorscheme tweaks are applied in `init.lua` rather than through the theme's
 `override` option, because the theme caches its highlights in
 `~/.cache/nvim/monokai-pro-classic.json` and does not notice changes to that option.
 
+Home and End are mapped from `<Find>` and `<Select>` in `init.lua`. Inside tmux they
+arrive as `ESC [ 1 ~` and `ESC [ 4 ~`, but [terminal/.tmux.conf](../terminal/.tmux.conf)
+sets `TERM=xterm-256color`, so Neovim doesn't read them as Home and End (Vim does).
+
 ## Cleaning up the cache
 
 <https://nixos.wiki/wiki/Cleaning_the_nix_store>

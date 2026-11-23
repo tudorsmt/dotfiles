@@ -21,6 +21,15 @@ opt.autocomplete = true
 -- Draw the border after the n-th column, so it matches VSCode behavior
 opt.colorcolumn = { 81, 101, 121 }
 
+-- Home and End inside tmux ---------------------------------------------------
+-- tmux sends them as ESC [ 1 ~ and ESC [ 4 ~, but tmux.conf sets TERM to
+-- xterm-256color, whose terminfo expects ESC O H and ESC O F. Neovim then reads
+-- them as the VT220 keys <Find> and <Select> and does nothing; Vim doesn't have
+-- this problem. Modified keys (<C-Home>, <S-End>...) arrive correctly.
+local home_end_modes = { "n", "i", "x", "s", "o", "c", "t" }
+vim.keymap.set(home_end_modes, "<Find>", "<Home>", { desc = "Home (tmux sends <Find>)" })
+vim.keymap.set(home_end_modes, "<Select>", "<End>", { desc = "End (tmux sends <Select>)" })
+
 -- Install plugins
 vim.api.nvim_create_autocmd("PackChanged", {
   group = vim.api.nvim_create_augroup("user_pack_hooks", { clear = true }),
@@ -42,7 +51,11 @@ vim.pack.add({
   "https://github.com/stevearc/aerial.nvim",
   { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
   "https://github.com/RRethy/vim-illuminate",
-  "https://github.com/Bekaboo/deadcolumn.nvim"
+  "https://github.com/Bekaboo/deadcolumn.nvim",
+  "https://github.com/nvim-mini/mini.pairs",
+  -- UI plugins
+  'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/nvim-lualine/lualine.nvim'
 })
 
 -- Colorscheme --------------------------------------------------------------
@@ -171,3 +184,8 @@ require("aerial").setup({
   show_guides = true,
 })
 vim.keymap.set("n", "<leader>o", "<cmd>AerialToggle<CR>", { desc = "Symbol outline" })
+
+-- Load the mini.pairs plugin
+require('mini.pairs').setup()
+-- Load statusline
+require('lualine').setup()
